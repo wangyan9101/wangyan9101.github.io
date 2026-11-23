@@ -1,30 +1,40 @@
-# GitHub Pages 博客主页模板
+# 王彦 · 技术主页
 
-这是一个纯静态个人博客主页，可以直接上传到 `wangyan9101.github.io` 仓库，也可以复制进 Hexo 主题里改造成首页。
+纯静态 GitHub Pages 网站，无后端、无需安装依赖。
 
-## 直接用于 GitHub Pages
+- `/`：个人信息、关键技能、工作经历、项目职责与重难点、教育及联系方式。
+- `/resume-v2/`：完整项目详情与分类筛选。
+- `/resume-v2/print.html`：正式三页 A4 打印版。
+- `/resume-v2/wangyan-resume.pdf`：已生成的三页 PDF。
+- `/legacy/`：保留的第一版博客模板首页。
 
-1. 在 GitHub 新建仓库：`wangyan9101.github.io`。
-2. 仓库设为 `Public`，不要勾选初始化 README。
-3. 把本文件夹里的 `index.html`、`styles.css`、`assets/` 上传到仓库根目录。
-4. 在 GitHub 仓库的 `Settings -> Pages` 中确认发布分支是 `main`，目录是 `/root`。
-5. 等待 1 到 3 分钟后访问 `https://wangyan9101.github.io`。
+## 本地预览
 
-## 替换个人信息
+在仓库根目录运行 `python -m http.server 4173 --bind 127.0.0.1`，访问 `http://127.0.0.1:4173/`。
 
-如果要继续定制，在 `index.html` 中改这些内容：
+## 更新与推送
 
-- `wangyan9101`
-- 示例文章标题和简介
-- 关于我的介绍文字
-- 文章链接
+```powershell
+cd D:\Working\blog-homepage
+git status
+git add index.html styles.css main.js README.md resume-v2 legacy assets/SB.jpg
+git diff --cached --stat
+git commit -m "Update technical homepage and resume"
+git push origin main
+```
 
-## 放进 Hexo 的思路
+当前远程：`git@github.com:wangyan9101/wangyan9101.github.io.git`。
 
-如果你已经有 Hexo 项目，可以把页面拆成主题模板：
+沿用 GitHub Pages 的 main 分支根目录发布配置，部署完成后首页为 `https://wangyan9101.github.io/`。如果推送被提示远程有更新，先 `git pull --rebase origin main`，处理冲突后再推送，不使用强制推送。
 
-- `index.html` 的正文结构可迁到主题的首页模板。
-- `styles.css` 可放进主题的样式目录。
-- `assets/hero-blog.png` 可放进主题或 `source/images/`。
+## 内容维护
 
-最省事的方式是先把 Hexo 正常部署跑通，再逐步把这个首页样式迁进去。
+首页内容直接编辑根目录 `index.html`，样式编辑 `styles.css`。
+V2 项目内容编辑 `resume-v2/content.js` 后运行 `node resume-v2/build.cjs`。
+正式版编辑 `resume-v2/print.html` / `print.css`，再重新导出 `wangyan-resume.pdf`；HTML 更新不会自动更新 PDF。
+
+正式内容已移除旧界面框架名称，保留真实导航编辑器开发经历；没有编造算法归属或未经核实的性能数字。
+
+## 主页交互样式
+
+导航及操作入口采用胶囊圆角；滚动后导航栏使用半透明磨砂背景。`main.js` 更新滚动状态、当前章节和导航高度，CSS 提供轻量悬停与按压反馈，并尊重系统减少动态效果设置。未启用 JavaScript 时内容和锚点仍可使用。
