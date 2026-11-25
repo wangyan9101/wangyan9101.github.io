@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const header = document.querySelector('.site-header');
-  const links = [...document.querySelectorAll('nav a[href^="#"]')];
+  const links = [...document.querySelectorAll('.site-header nav a[href^="#"]')];
   const sections = links.map(link => ({ link, target: document.getElementById(link.hash.slice(1)) }))
     .filter(section => section.target);
   if (!header) return;
@@ -52,4 +52,16 @@
     toggle.setAttribute('aria-label', label);
     toggle.title = label;
   });
+  const switcher = document.querySelector('.page-switcher');
+  if (switcher) {
+    document.addEventListener('click', event => {
+      if (!switcher.contains(event.target)) switcher.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && switcher.open) {
+        switcher.open = false;
+        switcher.querySelector('summary').focus();
+      }
+    });
+  }
 })();

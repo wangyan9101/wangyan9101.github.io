@@ -1,0 +1,40 @@
+.projects-page{width:min(1280px,calc(100% - 64px))}.projects-heading{padding:30px 0 26px}.projects-heading h1{font-size:30px}.projects-heading p{color:var(--muted)}.projects-layout{display:grid;grid-template-columns:286px minmax(0,1fr);gap:48px;align-items:start;padding-top:28px}.project-sidebar{position:sticky;top:calc(var(--header-height,84px) + 22px);max-height:calc(100dvh - var(--header-height,84px) - 44px);overflow-y:auto;scrollbar-width:thin;padding:0 12px 10px 0}.sidebar-label{font-size:13px;color:var(--muted);margin:0 0 20px 18px}.project-index{display:flex;flex-direction:column;gap:5px;position:relative;padding-left:17px;border-left:1px solid var(--line);margin-left:5px}.project-index .project-nav-item{position:relative;display:block;white-space:normal;text-align:left;min-height:0;padding:11px 13px;border:1px solid transparent;border-radius:9px;background:transparent;font-size:14px;color:var(--muted);line-height:1.7;transform:none;box-shadow:none}.project-nav-item:before{content:'';position:absolute;left:-22px;top:19px;width:7px;height:7px;border-radius:50%;background:var(--line);box-shadow:0 0 0 4px var(--bg);transition:background-color .2s}.project-index .project-nav-item:hover{color:var(--text);background:rgba(49,91,120,.045);text-decoration:none;border-color:transparent;transform:none;box-shadow:none}.project-index .project-nav-item.is-active{color:var(--accent);border-color:transparent;background:transparent}.project-nav-item.is-active:before{background:var(--accent)}.nav-title{font-weight:500}.nav-meta{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .24s ease,opacity .24s ease}.nav-meta>span{overflow:hidden;font-size:14px;color:var(--muted)}.is-active .nav-meta{grid-template-rows:1fr;opacity:1}.is-active .nav-meta>span{padding-top:5px}.project-menu-toggle{display:none}.project-content{min-width:0}.project-detail{padding:30px 0;border-bottom:1px solid var(--line);scroll-margin-top:24px}.project-detail:first-child{padding-top:0}.project-detail h2{margin:6px 0 20px;border:0;padding:0;font-size:23px}.project-phase{font-size:14px;color:var(--muted)}.project-detail p{margin:14px 0}.project-detail li{margin:9px 0;overflow-wrap:anywhere}.project-detail ol{padding-left:25px}.project-return{margin:28px 0}.project-detail:target h2{color:var(--accent)}@media(max-width:1100px){.projects-layout{grid-template-columns:250px minmax(0,1fr);gap:28px}}@media(max-width:900px){.projects-layout{grid-template-columns:1fr;gap:24px;padding-top:20px}.project-sidebar{position:static;max-height:none;padding:0;border-bottom:1px solid var(--line)}.sidebar-label{display:none}.project-menu-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 14px;margin-bottom:12px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px;cursor:pointer}.project-index{margin-bottom:18px}.project-sidebar.is-collapsed .project-index{display:none}.project-sidebar.is-collapsed .project-menu-toggle span{transform:rotate(-90deg)}.project-sidebar:target .project-index{display:flex}.projects-heading h1{font-size:26px}.project-detail{padding-block:25px}.project-detail h2{font-size:21px}}@media(max-width:700px){.projects-page{width:calc(100% - 36px)}}@media print{.project-sidebar,.project-return{display:none}.projects-layout{display:block;padding:0}.projects-page{width:100%}.project-detail{break-inside:auto}.project-detail li{break-inside:avoid}}
+.page-title-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}
+.projects-page>.projects-layout{padding-top:30px}
+[data-theme="dark"] .project-index .project-nav-item.is-active{background:transparent;border-color:transparent}
+[data-theme="dark"] .project-index .project-nav-item:hover{background:rgba(165,196,214,.07)}
+[data-theme="dark"] .project-menu-toggle{background:var(--bg)}
+
+/* Feathered selection: no hard edge, fade towards every side. */
+.project-index .project-nav-item { isolation: isolate; }
+.project-index .project-nav-item::after {
+  content: "";
+  position: absolute;
+  inset: -3px -5px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 45% 50%, rgba(49, 91, 120, .12) 0%, rgba(49, 91, 120, .065) 40%, rgba(49, 91, 120, 0) 74%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+.project-index .project-nav-item.is-active::after { opacity: 1; }
+[data-theme="dark"] .project-index .project-nav-item::after {
+  background: radial-gradient(ellipse at 45% 50%, rgba(165, 196, 214, .17) 0%, rgba(165, 196, 214, .08) 40%, rgba(165, 196, 214, 0) 74%);
+}
+[data-theme="dark"] .project-index .project-nav-item.is-active:hover { background: transparent; }
+/* Preview time and technology on hover or keyboard focus without changing selection. */
+.project-nav-item:focus-visible .nav-meta { grid-template-rows: 1fr; opacity: 1; }
+.project-nav-item:focus-visible .nav-meta>span { padding-top: 5px; }
+@media (hover: hover) and (pointer: fine) {
+  .project-nav-item:hover .nav-meta { grid-template-rows: 1fr; opacity: 1; }
+  .project-nav-item:hover .nav-meta>span { padding-top: 5px; }
+}
+.project-filters{position:sticky;top:0;z-index:3;display:flex;flex-wrap:wrap;gap:7px;background:var(--bg);padding:0 0 12px}
+.project-filters button{font:inherit;font-size:13px;line-height:1.5;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.project-filters button[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.project-filters button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(hover:hover){.project-filters button:hover{border-color:var(--accent);color:var(--accent)}.project-filters button[aria-pressed="true"]:hover{color:var(--bg)}}
+.filter-status{font-size:12px;color:var(--muted);margin:0 0 16px 2px}
+.project-nav-item[hidden],.project-detail[hidden]{display:none!important}
+@media(max-width:900px){.project-filters{position:static}.filter-status{margin-bottom:12px}}
+@media print{.project-detail[hidden]{display:block!important}}

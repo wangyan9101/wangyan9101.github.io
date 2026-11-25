@@ -284,3 +284,22 @@ main > header { padding-top: 26px; }
   .portrait-frame:hover::before,
   .portrait-frame:hover::after { opacity: 1; }
 }
+/* Shared page navigation, with native keyboard-accessible disclosure. */
+.page-switcher{position:relative;margin-right:auto;font-size:14px}
+.page-switcher summary{display:flex;align-items:center;gap:10px;list-style:none;cursor:pointer;padding:6px 12px;border:1px solid transparent;border-radius:999px;transition:background-color .2s,border-color .2s}
+.page-switcher summary::-webkit-details-marker{display:none}
+.page-switcher summary:hover,.page-switcher[open] summary{background:var(--control-bg);border-color:var(--line)}
+.page-switcher summary svg{transition:transform .2s}
+.page-switcher[open] summary svg{transform:rotate(180deg)}
+.page-switcher summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.page-switcher-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:180px;padding:6px;background:var(--bg);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(30,41,51,.12)}
+.page-switcher-menu a{display:block;padding:9px 12px;border-radius:7px;color:var(--text);text-decoration:none}
+.page-switcher-menu a:hover,.page-switcher-menu a[aria-current="page"]{background:var(--control-bg);color:var(--accent)}
+.site-header>.theme-toggle{margin-left:auto}
+@media(max-width:700px){.site-header{column-gap:10px}.site-header>.page-switcher{order:0}.site-header>.brand{order:0}.site-header>.theme-toggle{order:1}}
+@media print{.page-switcher{display:none}}
+
+.job .former-name {
+  font-size: 0.85em;
+  font-weight: normal;
+}
