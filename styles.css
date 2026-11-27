@@ -299,7 +299,8 @@ main > header { padding-top: 26px; }
 @media(max-width:700px){.site-header{column-gap:10px}.site-header>.page-switcher{order:0}.site-header>.brand{order:0}.site-header>.theme-toggle{order:1}}
 @media print{.page-switcher{display:none}}
 
-.job .former-name {
+.former-name {
   font-size: 0.85em;
   font-weight: normal;
+  margin: 0.3em 0;
 }
